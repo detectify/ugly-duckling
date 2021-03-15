@@ -1,0 +1,10 @@
+{
+	"request": {
+		"path": "/anything"
+	},
+	"response": {
+		"matches": [
+			{"type": "static", "pattern": "data"}
+		]
+	}
+}

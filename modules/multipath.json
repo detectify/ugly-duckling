@@ -1,0 +1,28 @@
+{
+	"name": "example 3",
+	"request": {
+		"method": "POST",
+		"paths": [
+			"/anything",
+			"/get",
+			"/post"
+		],
+		"body": "{\"magicWord\": \"please!\"}",
+		"headers": [
+			"Content-Type: application/json",
+			"Accept: application/json"
+		]
+	},
+	"response": {
+		"matchesRequired": 4,
+		"matches": [
+			{"type": "static", "pattern": "please!", "required": true},
+			{"type": "regex", "pattern": "magic\\w"},
+			{"type": "status", "code": 200},
+			{"type": "header", "name": "Content-Type", "pattern": "application/.*"}
+		],
+		"mustNotMatch": [
+			{"type": "regex", "pattern": "(server error|not found)"}
+		]
+	}
+}

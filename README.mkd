@@ -1,0 +1,144 @@
+# ugly-duckling
+
+## What It Is
+
+ugly-duckling is a very basic (and currently alpha-quality) vulnerability scanner built by the reasearch team at Detectify.
+It exists so that members of [Detectify Crowdsource](https://detectify.com/crowdsource/ethical-hacking-with-crowdsource)
+can submit proof-of-concept modules in a way that we can test and implement efficiently.
+
+ugly-duckling is not in use internally at Detectify and was built specifically for this purpose.
+
+
+## Why?
+
+Although we have shared one of our internal module formats with our Crowdsource members in the past, it is a complex format
+with many features that only make sense in an internal Detectify context. We wanted people to be able to develop, test, and run
+modules in a simple and easy to document format.
+
+We also considered using a pre-existing scanner for this purpose - there are many great scanners our there to choose from after all - 
+but not having control over the module format and available features might make it harder to maintain a tool that translates things
+to our internal formats.
+
+
+## Contributions
+
+We welcome pull requests that implement bug fixes and minor improvements - we tried to implement only the bare minimum amount of
+functionality so we probably missed things!
+
+If you have novel modules you would like to submit we recommend you join [Detectify Crowdsource](https://detectify.com/crowdsource/ethical-hacking-with-crowdsource)
+to submit them so that you can be rewarded for any hits they may produce.
+
+
+## Building
+
+ugly-duckling is written in Go and has no external dependencies.
+
+You can install it with `go get`:
+
+```
+▶ go get github.com/detectify/ugly-duckling
+```
+
+Or clone the repository and build it manually:
+
+```
+▶ git clone https://github.com/detectify/ugly-duckling.git
+▶ cd ugly-duckling
+▶ go install
+```
+
+## Usage
+
+ugly-duckling reads URLs on `stdin`, and takes a list of modules as its arguments (defaulting to `./modules/*.json` if none are provided).
+
+A standard invocation to run a single module against a single URL might look like this:
+
+```
+▶ echo https://example.com/ | ugly-duckling modules/test3.json
+```
+
+Or to run against multiple URLs contained in `urls.txt`:
+
+```
+▶ cat urls.txt | ugly-duckling modules/test.json
+```
+
+### Options
+
+* `-c <int> / --concurrency <int>` - set the concurrency for HTTP requests (defaults to 1)
+* `-v / --verbose` - display debug type output (e.g. which modules have been loaded)
+
+
+## Module Format
+
+Here is an example module that demonstrates all functionality in ugly-duckling:
+
+```json
+{
+	"request": {
+		"method": "POST",
+		"path": "/anything",
+		"body": "{\"magicWord\": \"please!\"}",
+		"headers": [
+			"Content-Type: application/json",
+			"Accept: application/json"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{"type": "static", "pattern": "please!", "required": true},
+			{"type": "regex", "pattern": "magic\\w"},
+			{"type": "status", "code": 200},
+			{"type": "header", "name": "Content-Type", "pattern": "application/.*"}
+		],
+		"mustNotMatch": [
+			{"type": "regex", "pattern": "(server error|not found)"}
+		]
+	}
+}
+```
+
+The `request` and `response` sections are both required. The minimum possible module has a `path` in the
+`request` section, and at least one thing in the `matches` list in the `response` section:
+
+```json
+{
+	"request": {
+		"path": "/anything"
+	},
+	"response": {
+		"matches": [
+			{"type": "static", "pattern": "data"}
+		]
+	}
+}
+```
+
+### Request Section
+
+The request section contains details about the HTTP request to be sent.
+
+* `method` - HTTP method to use; `GET`, `POST`, `HEAD` etc
+* `path` - Path and query string to append to the input URL
+* `body` - Data to be sent as the request body
+* `headers` - An array of headers to send with the request
+
+### Response Section
+
+The response section contains details about how to check the response for a hit.
+
+* `matchesRequired` - How many matches must be made for a module to be considered a 'hit'
+* `matches` - An array of objects describing the matches to be performed
+* `mustNotMatch` - An array of objects describing things which must not be matched
+
+#### Matches
+
+Match objects can have one of a few different types:
+
+* `static` - an exact text match is performed using the `pattern` parameter
+* `regex` - a regular expression match is performed using the `pattern` parameter; the regex engine is the [default Go engine](https://golang.org/pkg/regexp/).
+* `status` - the status code of the response is compared to the integer in the `code` parameter
+* `header` - a regular expression match is performed against the header specied in the `name` parameter using the pattern specified in the `pattern` parameter
+
+Any match object in the `matches` array can have a `required` parameter set to `true` so that a match *must* be met for a module to be considered a hit.

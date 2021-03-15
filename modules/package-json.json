@@ -1,0 +1,14 @@
+{
+	"name": "package.json",
+	"request": {
+		"path": "/package.json"
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{"type": "static", "pattern": "\"name\":"},
+			{"type": "static", "pattern": "\"version\":"},
+			{"type": "status", "code": 200, "required": true}
+		]
+	}
+}

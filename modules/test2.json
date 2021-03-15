@@ -1,0 +1,19 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/get",
+        "headers": [
+            "Accept: application/json",
+			"Footle: bootle"
+        ]
+    },
+    "response": {
+		"matchesRequired": 2,
+        "matches": [
+            {"type": "static", "pattern": "foo=bar"},
+            {"type": "regex", "pattern": "fo+=ba+"},
+            {"type": "static", "pattern": "Footle"},
+            {"type": "regex", "pattern": "Ac[cept]+"}
+        ]
+    }
+}

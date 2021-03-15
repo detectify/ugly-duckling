@@ -1,0 +1,13 @@
+{
+	"name": "firing-range reflected XSS",
+	"request": {
+		"path": "/reflected/parameter/body?q=<script>alert(123)</script>"
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{"type": "static", "pattern": "<script>alert(123)</script>"},
+			{"type": "status", "code": 200}
+		]
+	}
+}
