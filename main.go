@@ -24,7 +24,7 @@ func init() {
 			"",
 		}
 
-		fmt.Fprintf(os.Stderr, strings.Join(h, "\n"))
+		fmt.Fprint(os.Stderr, strings.Join(h, "\n"))
 	}
 }
 
