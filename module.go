@@ -81,12 +81,14 @@ func newModule(filename string) (*module, error) {
 }
 
 func (m *module) newRequest(baseURL, path string) (*http.Request, error) {
-
 	req, err := http.NewRequest(
 		m.Request.Method,
 		baseURL+path,
 		bytes.NewBuffer([]byte(m.Request.Body)),
 	)
+	if err != nil {
+		return nil, err
+	}
 
 	for _, h := range m.Request.Headers {
 		parts := strings.SplitN(h, ":", 2)
@@ -100,10 +102,6 @@ func (m *module) newRequest(baseURL, path string) (*http.Request, error) {
 		k := strings.TrimSpace(parts[0])
 		v := strings.TrimSpace(parts[1])
 		req.Header.Set(k, v)
-	}
-
-	if err != nil {
-		return nil, err
 	}
 
 	return req, nil
