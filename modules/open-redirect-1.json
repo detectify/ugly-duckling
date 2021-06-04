@@ -1,0 +1,13 @@
+{
+	"request": {
+		"path": "//example.com"
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{"type": "status", "code": 301},
+			{"type": "status", "code": 302},
+			{"type": "header", "name": "Location", "pattern": "(?i)^//example.om"}
+		]
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"request": {
+		"path": "jquery-file-upload/server/php/"
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{"type": "status", "code": 200, "required": true},
+			{"type": "regex", "pattern": "^{\"files\":"}
+		]
+	}
+}

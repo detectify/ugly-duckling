@@ -1,0 +1,11 @@
+{
+	"request": {
+		"path": "/nginx_status"
+	},
+	"response": {
+		"matchesRequired": 1,
+		"matches": [
+			{"type": "static", "pattern": "server accepts handled requests"}
+		]
+	}
+}
