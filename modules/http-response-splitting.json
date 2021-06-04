@@ -1,0 +1,11 @@
+{
+	"request": {
+		"path": "/%0d%0ahrs:hrs"
+	},
+	"response": {
+		"matchesRequired": 1,
+		"matches": [
+			{"type": "header", "name": "hrs", "pattern": "."}
+		]
+	}
+}

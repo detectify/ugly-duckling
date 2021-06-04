@@ -1,0 +1,16 @@
+{
+	"request": {
+		"path": "/actuator/env"
+	},
+	"response": {
+		"matchesRequired": 6,
+		"matches": [
+			{"type": "status", "code": 200, "required": true},
+			{"type": "header", "name": "Content-Type", "pattern": "(?i)application/json", "required": true},
+			{"type": "static", "pattern": "\"profiles"},
+			{"type": "static", "pattern": "\"servletContextInitParams"},
+			{"type": "static", "pattern": "\"systemProperties"},
+			{"type": "static", "pattern": "\"systemEnvironment"}
+		]
+	}
+}

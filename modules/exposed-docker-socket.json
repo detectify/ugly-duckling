@@ -1,0 +1,19 @@
+{
+	"request": {
+		"path": "containers/json"
+	},
+	"response": {
+		"matchesRequired": 5,
+		"matches": [
+			{"type": "status", "code": 200, "required": true},
+			{"type": "header", "name": "Content-Type", "pattern": "(?i)application/json", "required": true},
+			{"type": "static", "pattern": "\"Id\"", "required": true},
+			{"type": "static", "pattern": "\"Names\""},
+			{"type": "static", "pattern": "\"Image\""},
+			{"type": "static", "pattern": "\"ImageID\""},
+			{"type": "static", "pattern": "\"Command\""},
+			{"type": "static", "pattern": "\"Created\""},
+			{"type": "static", "pattern": "\"State\""}
+		]
+	}
+}
