@@ -1,0 +1,25 @@
+{
+	"reference": "https://www.ambionics.io/blog/symfony-secret-fragment",
+	"request": {
+		"paths": [
+			"/_fragment"
+		]
+	},
+	"response": {
+		"matchesRequired": 3,
+		"matches": [
+			{
+				"type": "status",
+				"code": 403
+			},
+			{
+				"type": "static",
+				"pattern": "AccessDeniedHttpException"
+			},
+			{
+				"type": "static",
+				"pattern": "FragmentListener"
+			}
+		]
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"submitter": "Sebastian Neef (@gehaxelt),  https://cs.detectify.com/profile/gehaxelt",
+	"request": {
+		"paths": [
+			"roundcube/logs/sendmail",
+			"roundcube/logs/errors.log"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "IMAP Error:"
+			}
+		]
+	}
+}

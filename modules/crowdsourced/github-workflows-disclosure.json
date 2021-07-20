@@ -1,0 +1,60 @@
+{
+	"submitter": "Sebastian Neef (@gehaxelt),  https://cs.detectify.com/profile/gehaxelt",
+	"request": {
+		"paths": [
+			"/.github/workflows/ci.yml",
+			"/.github/workflows/ci.yaml",
+			"/.github/workflows/CI.yml",
+			"/.github/workflows/main.yml",
+			"/.github/workflows/main.yaml",
+			"/.github/workflows/build.yml",
+			"/.github/workflows/build.yaml",
+			"/.github/workflows/test.yml",
+			"/.github/workflows/test.yaml",
+			"/.github/workflows/tests.yml",
+			"/.github/workflows/tests.yaml",
+			"/.github/workflows/release.yml",
+			"/.github/workflows/publish.yml",
+			"/.github/workflows/deploy.yml",
+			"/.github/workflows/push.yml",
+			"/.github/workflows/lint.yml",
+			"/.github/workflows/coverage.yml",
+			"/.github/workflows/release.yaml",
+			"/.github/workflows/pr.yml",
+			"/.github/workflows/automerge.yml",
+			"/.github/workflows/docker.yml"
+		]
+	},
+	"response": {
+		"matchesRequired": 5,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)application/yaml",
+				"required": true
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\s*\"?on\"?: "
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\s*\"?jobs\"?:"
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\s*\"?steps\"?:"
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\s*- \"?uses\"?:"
+			}
+		]
+	}
+}

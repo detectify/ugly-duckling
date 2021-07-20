@@ -1,0 +1,43 @@
+{
+	"submitter": "Sebastian Neef (@gehaxelt),  https://cs.detectify.com/profile/gehaxelt",
+	"request": {
+		"paths": [
+			"/user.ini",
+			"/.user.ini"
+		]
+	},
+	"response": {
+		"matchesRequired": 5,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "assert"
+			},
+			{
+				"type": "static",
+				"pattern": "highlight"
+			},
+			{
+				"type": "static",
+				"pattern": "opcache"
+			},
+			{
+				"type": "static",
+				"pattern": "mssql"
+			},
+			{
+				"type": "static",
+				"pattern": "oci8"
+			},
+			{
+				"type": "static",
+				"pattern": "agent"
+			}
+		]
+	}
+}

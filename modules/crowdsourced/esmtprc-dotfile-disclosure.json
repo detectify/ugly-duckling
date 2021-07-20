@@ -1,0 +1,27 @@
+{
+	"name": "esmtprc dotfile",
+	"request": {
+		"path": "/.esmtprc"
+	},
+	"response": {
+		"matchesRequired": 4,
+		"matches": [
+			{
+				"type": "static",
+				"pattern": "hostname"
+			},
+			{
+				"type": "static",
+				"pattern": "username"
+			},
+			{
+				"type": "static",
+				"pattern": "password"
+			},
+			{
+				"type": "status",
+				"code": 200
+			}
+		]
+	}
+}

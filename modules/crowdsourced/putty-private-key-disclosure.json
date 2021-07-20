@@ -1,0 +1,24 @@
+{
+	"request": {
+		"paths": [
+			"/my.ppk"
+		]
+	},
+	"response": {
+		"matchesRequired": 3,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200
+			},
+			{
+				"type": "static",
+				"pattern": "PuTTY-User-Key-File"
+			},
+			{
+				"type": "static",
+				"pattern": "Encryption:"
+			}
+		]
+	}
+}

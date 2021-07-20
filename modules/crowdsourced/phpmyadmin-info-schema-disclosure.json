@@ -1,0 +1,30 @@
+{
+	"request": {
+		"paths": [
+			"/index.php?db=information_schema"
+		]
+	},
+	"response": {
+		"matchesRequired": 3,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200
+			},
+			{
+				"type": "static",
+				"pattern": "var common_query ="
+			},
+			{
+				"type": "static",
+				"pattern": "var pma_absolute_uri ="
+			}
+		],
+		"mustNotMatch": [
+			{
+				"type": "regex",
+				"pattern": "<label for=\"input_password\">Password:</label>"
+			}
+		]
+	}
+}

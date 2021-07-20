@@ -1,0 +1,37 @@
+{
+	"request": {
+		"method": "GET",
+		"path": "/xmldata?item=CpqKey",
+		"headers": [
+			"Accept: text/xml"
+		]
+	},
+	"response": {
+		"matches": [
+			{
+				"type": "static",
+				"pattern": "LTYPE",
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "LNAME",
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "KEY",
+				"required": true
+			},
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "^text/xml"
+			},
+			{
+				"type": "status",
+				"code": 200
+			}
+		]
+	}
+}
