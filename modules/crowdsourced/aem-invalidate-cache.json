@@ -1,0 +1,24 @@
+{
+	"request": {
+		"paths": [
+			"/dispatcher/invalidate.cache"
+		],
+		"headers": [
+			"CQ-Handle: /content",
+			"CQ-Path: /content"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200
+			},
+			{
+				"type": "regex",
+				"pattern": "^<H1>OK</H1>$"
+			}
+		]
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"reference": "https://github.com/nmap/nmap/issues/1016",
+	"request": {
+		"paths": [
+			"/xmldata?item=CpqKey"
+		]
+	},
+	"response": {
+		"matchesRequired": 4,
+		"matches": [
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)text/html",
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "LTYPE"
+			},
+			{
+				"type": "static",
+				"pattern": "LNAME"
+			},
+			{
+				"type": "static",
+				"pattern": "KEY"
+			}
+		]
+	}
+}

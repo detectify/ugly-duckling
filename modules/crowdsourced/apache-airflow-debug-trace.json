@@ -1,0 +1,24 @@
+{
+	"request": {
+		"paths": [
+			"/admin/airflow/login"
+		]
+	},
+	"response": {
+		"matchesRequired": 3,
+		"matches": [
+			{
+				"type": "status",
+				"code": 500
+			},
+			{
+				"type": "static",
+				"pattern": "<h1> Ooops. </h1>"
+			},
+			{
+				"type": "static",
+				"pattern": "Traceback (most recent call last)"
+			}
+		]
+	}
+}

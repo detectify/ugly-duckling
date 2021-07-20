@@ -1,0 +1,22 @@
+{
+	"request": {
+		"paths": [
+			"//////../../../etc/passwd",
+			"static//////../../../../etc/passwd",
+			"///../app.js"
+		]
+	},
+	"response": {
+		"matchesRequired": 1,
+		"matches": [
+			{
+				"type": "static",
+				"pattern": "root:"
+			},
+			{
+				"type": "static",
+				"pattern": "app.listen"
+			}
+		]
+	}
+}

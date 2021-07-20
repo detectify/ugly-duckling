@@ -1,0 +1,38 @@
+{
+	"request": {
+		"paths": [
+			"/__clockwork/latest"
+		]
+	},
+	"response": {
+		"matchesRequired": 6,
+		"matches": [
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)application/json",
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "\"id\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"version\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"method\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"url\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"time\""
+			}
+		]
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"submitter": "Sebastian Neef (@gehaxelt),  https://cs.detectify.com/profile/gehaxelt",
+	"request": {
+		"paths": [
+			"/appspec.yml",
+			"/appspec.yaml"
+		]
+	},
+	"response": {
+		"matchesRequired": 5,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)application/yaml",
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "\"version\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"os\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"files\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"permissions\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"hooks\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"BeforeInstall\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"ApplicationStart\""
+			}
+		]
+	}
+}

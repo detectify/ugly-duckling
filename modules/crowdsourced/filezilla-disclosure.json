@@ -1,0 +1,25 @@
+{
+	"request": {
+		"paths": [
+			"/FileZilla.xml"
+		]
+	},
+	"response": {
+		"matchesRequired": 3,
+		"matches": [
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)(text/xml|application/xml)"
+			},
+			{
+				"type": "static",
+				"pattern": "<RecentServers>"
+			},
+			{
+				"type": "static",
+				"pattern": "<FileZilla"
+			}
+		]
+	}
+}

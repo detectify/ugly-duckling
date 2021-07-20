@@ -1,0 +1,16 @@
+{
+	"request": {
+		"paths": [
+			"/Thumbs.db"
+		]
+	},
+	"response": {
+		"matchesRequired": 1,
+		"matches": [
+			{
+				"type": "regex",
+				"pattern": "\\xD0\\xCF\\x11\\xE0\\xA1\\xB1\\x1A\\xE1"
+			}
+		]
+	}
+}

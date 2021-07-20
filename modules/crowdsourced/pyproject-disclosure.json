@@ -1,0 +1,24 @@
+{
+	"request": {
+		"paths": [
+			"/pyproject.toml"
+		]
+	},
+	"response": {
+		"matchesRequired": 3,
+		"matches": [
+			{
+				"type": "static",
+				"pattern": "[build-system]"
+			},
+			{
+				"type": "static",
+				"pattern": "[tool.poetry]"
+			},
+			{
+				"type": "status",
+				"code": 200
+			}
+		]
+	}
+}

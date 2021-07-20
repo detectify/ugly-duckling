@@ -1,0 +1,23 @@
+{
+	"submitter": "Sebastian Neef (@gehaxelt),  https://cs.detectify.com/profile/gehaxelt",
+	"request": {
+		"paths": [
+			"/telescope"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)text/html",
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "<strong>Laravel</strong> Telescope"
+			}
+		]
+	}
+}

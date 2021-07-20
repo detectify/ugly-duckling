@@ -1,0 +1,23 @@
+{
+	"submitter": "Sebastian Neef (@gehaxelt),  https://cs.detectify.com/profile/gehaxelt",
+	"request": {
+		"paths": [
+			"/.dockerfile",
+			"/.Dockerfile"
+		]
+	},
+	"response": {
+		"matchesRequired": 2,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "regex",
+				"pattern": "^(?:FROM(?:CACHE)?|RUN|ADD|WORKDIR|ENV|EXPOSE|\\#)\\s+[ -~]+"
+			}
+		]
+	}
+}

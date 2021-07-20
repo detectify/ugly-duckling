@@ -1,0 +1,44 @@
+{
+	"submitter": "Sebastian Neef (@gehaxelt),  https://cs.detectify.com/profile/gehaxelt",
+	"request": {
+		"paths": [
+			"/kustomization.yml"
+		]
+	},
+	"response": {
+		"matchesRequired": 4,
+		"matches": [
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)application/yaml",
+				"required": true
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\s*apiVersion\\s*:\\s*kustomize\\.config"
+			},
+			{
+				"type": "regex",
+				"pattern": "(?mi)^\\s*kind\\s*:\\s*Kustomization"
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\scommonLabels\\s*:"
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\sresources\\s*:"
+			},
+			{
+				"type": "regex",
+				"pattern": "(?m)^\\snamespace\\s*:"
+			}
+		]
+	}
+}

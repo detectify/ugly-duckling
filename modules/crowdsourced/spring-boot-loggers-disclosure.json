@@ -1,0 +1,31 @@
+{
+	"request": {
+		"paths": [
+			"/actuator/loggers",
+			"/loggers"
+		]
+	},
+	"response": {
+		"matchesRequired": 4,
+		"matches": [
+			{
+				"type": "header",
+				"name": "Content-Type",
+				"pattern": "(?i)(spring-boot.actuator|application/json)"
+			},
+			{
+				"type": "status",
+				"code": 200,
+				"required": true
+			},
+			{
+				"type": "static",
+				"pattern": "\"loggers\""
+			},
+			{
+				"type": "static",
+				"pattern": "\"profiles\":"
+			}
+		]
+	}
+}
