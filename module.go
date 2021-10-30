@@ -81,11 +81,24 @@ func newModule(filename string) (*module, error) {
 }
 
 func (m *module) newRequest(baseURL, path string) (*http.Request, error) {
-	req, err := http.NewRequest(
-		m.Request.Method,
-		baseURL+path,
-		bytes.NewBuffer([]byte(m.Request.Body)),
-	)
+        // check last character of baseURL and first character of path
+        // if both are "/", use only one
+        url_last_character := string(baseURL[len(baseURL)-1:])
+        path_first_character := string(path[:1])
+        equal_characters := url_last_character == path_first_character
+        is_slash, targetURL := url_last_character == "/", ""
+
+        if equal_characters && is_slash {
+            targetURL = baseURL+string(path[1:])
+        } else {
+            targetURL = baseURL+path
+        }
+
+        req, err := http.NewRequest(
+                m.Request.Method,
+                targetURL,
+                bytes.NewBuffer([]byte(m.Request.Body)),
+        )
 	if err != nil {
 		return nil, err
 	}
